@@ -11,7 +11,7 @@ import { ToppingsService } from '../../services/toppings.service';
   selector: 'product-item',
   styleUrls: ['product-item.component.scss'],
   template: `
-    <div 
+    <div
       class="product-item">
       <pizza-form
         [pizza]="pizza"
@@ -58,12 +58,16 @@ export class ProductItemComponent implements OnInit {
 
   onSelect(event: number[]) {
     let toppings;
+    console.log('event', event);
+    console.log('this.toppings', this.toppings);
     if (this.toppings && this.toppings.length) {
       toppings = event.map(id =>
         this.toppings.find(topping => topping.id === id)
       );
+      console.log('IF toppings', toppings);
     } else {
       toppings = this.pizza.toppings;
+      console.log('ELSE toppings', toppings);
     }
     this.visualise = { ...this.pizza, toppings };
   }
